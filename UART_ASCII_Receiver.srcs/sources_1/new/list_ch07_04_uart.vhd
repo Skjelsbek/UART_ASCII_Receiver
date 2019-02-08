@@ -120,4 +120,11 @@ begin
 --            tx => tx
 --        );
 --    tx_fifo_not_empty <= not tx_empty;
+
+    process(rx_done_tick)
+    begin
+        if(rx_done_tick = '1') then
+            r_data <= rx_data_out;
+        end if;
+    end process;
 end str_arch;
