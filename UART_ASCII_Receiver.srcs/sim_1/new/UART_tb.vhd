@@ -13,7 +13,7 @@ architecture Behavioral of UART_tb is
     --signal rd_uart: std_logic;
     signal rx: std_logic;
     --signal rx_empty: std_logic;
-    signal r_data: std_logic_vector(7 downto 0);
+    signal led: std_logic_vector(7 downto 0);
     
     constant rx_data: std_logic_vector(7 downto 0) := "10110011";
     
@@ -38,10 +38,10 @@ begin
         wr_uart => '0',
         rx => rx,
         w_data => (others => '0'),
-        tx_full => open,
-        rx_empty => open,
-        r_data => r_data,
-        tx => open
+        --tx_full => open,
+        --rx_empty => open,
+        led => led
+        --tx => open
     );
     
     -- Stim proc
