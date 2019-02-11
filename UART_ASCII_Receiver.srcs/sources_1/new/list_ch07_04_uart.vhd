@@ -20,9 +20,7 @@ entity uart is
         rd_uart, wr_uart: in std_logic;
         rx: in std_logic;
         w_data: in std_logic_vector(7 downto 0);
-        tx_full, rx_empty: out std_logic;
-        r_data: out std_logic_vector(7 downto 0);
-        tx: out std_logic
+        led: out std_logic_vector(7 downto 0)
     );
 end uart;
 
@@ -30,10 +28,7 @@ architecture str_arch of uart is
 
     signal tick: std_logic;
     signal rx_done_tick: std_logic;
-    signal tx_fifo_out: std_logic_vector(7 downto 0);
     signal rx_data_out: std_logic_vector(7 downto 0);
-    signal tx_empty, tx_fifo_not_empty: std_logic;
-    signal tx_done_tick: std_logic;
     
 begin
 
@@ -124,7 +119,7 @@ begin
     process(rx_done_tick)
     begin
         if(rx_done_tick = '1') then
-            r_data <= rx_data_out;
+            led <= rx_data_out;
         end if;
     end process;
 end str_arch;
